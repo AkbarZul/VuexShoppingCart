@@ -2,6 +2,7 @@
   <ul class="list-group">
     <li class="list-group-item" v-for="item in cart" :key="item.id">
       <button
+      @click="removeItem(item.id)"
         type="button"
         class="btn-close"
         data-bs-dismiss="modal"
@@ -16,9 +17,9 @@
         />
         <div class="media-body">
           <p class="mt-0">{{item.title}}</p>
-          <button class="btn-qty btn-sm btn-secondary">-</button>
+          <button @click="reduceQty(item.id)" class="btn-qty btn-sm btn-secondary">-</button>
           x {{item.qty}}
-          <button class="btn-qty btn-sm btn-secondary">+</button>
+          <button @click="addQty(item.id)" class="btn-qty btn-sm btn-secondary">+</button>
         </div>
       </div>
     </li>
@@ -26,11 +27,14 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
 export default {
   name: "Cart",
   computed: {
     ...mapGetters(["cart"])
+  },
+  methods: {
+    ...mapActions(["addQty", "reduceQty", "removeItem"])
   }
 };
 </script>
