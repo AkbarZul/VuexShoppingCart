@@ -20,10 +20,21 @@ export default new Vuex.Store({
     getProducts({ commit }) {
       commit("getProductData");
     },
+    addToCart({ commit }, item) {
+      commit("addItemToCart", item);
+    },
   },
   mutations: {
     getProductData(state) {
       state.products = products;
+    },
+    addItemToCart(state, item) {
+      const addedItem = state.cart.find((product) => product.id === item.id);
+      if (addedItem) {
+        addedItem.qty++;
+      } else {
+        state.cart.push({ ...item, qty: 1 });
+      }
     },
   },
 });

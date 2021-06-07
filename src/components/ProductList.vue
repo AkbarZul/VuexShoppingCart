@@ -10,7 +10,7 @@
       <div class="card-body">
         <p class="card-title">{{ item.title }}</p>
         <p class="card-text">$ {{ item.price }}</p>
-        <a href="#" class="btn btn-primary">Add To Cart</a>
+        <a  @click="addToCart(item)" class="btn btn-primary">Add To Cart</a>
       </div>
     </div>
   </div>
@@ -24,7 +24,7 @@ export default {
       ...mapGetters(["products"])
   },
   methods: {
-      ...mapActions(["getProducts"]),
+      ...mapActions(["getProducts", "addToCart"]),
   },
   mounted() {
       this.getProducts();
