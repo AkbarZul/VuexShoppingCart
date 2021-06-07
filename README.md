@@ -19,6 +19,8 @@ npm run build
 ```
 npm run lint
 ```
+### Demo Web
+* [here](https://shoppingcardvue.netlify.app/)
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
