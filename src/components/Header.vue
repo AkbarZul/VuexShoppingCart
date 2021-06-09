@@ -12,6 +12,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: "Header",
   computed: {
+    // mengambil state yang ada di vuex dari state yg sudah difilter di getter
     ...mapGetters(["cart"]),
     totalQty() {
       return this.cart.reduce((a,b) => a+b.qty, 0)
